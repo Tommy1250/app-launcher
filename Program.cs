@@ -87,10 +87,13 @@ namespace LaunchApp
                         string aliasesjson = File.ReadAllText(aliasesFile);
                         JObject aliases = JObject.Parse(aliasesjson);
 
-                        if (data[aliases[name].ToString()] != null)
+                        if (aliases[name] != null)
                         {
-                            Utils.RunApp(data, aliases[name].ToString());
-                            return;
+                            if (data[aliases[name].ToString()] != null)
+                            {
+                                Utils.RunApp(data, aliases[name].ToString());
+                                return;
+                            }
                         }
                     }
 
