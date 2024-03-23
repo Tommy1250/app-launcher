@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "app launcher": {
+      "commandName": "Project",
+      "commandLineArgs": "alias remove bp"
+    }
+  }
+}
