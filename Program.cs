@@ -272,6 +272,18 @@ namespace LaunchApp
                             consoleString += item.Value["args"];
                         Console.WriteLine(consoleString);
                     }
+
+                    if (File.Exists(aliasesFile))
+                    {
+                        string aliasesjson = File.ReadAllText(aliasesFile);
+                        JObject aliases = JObject.Parse(aliasesjson);
+
+                        Console.WriteLine("Here are the avalable aliases.");
+                        foreach (var item in aliases)
+                        {
+                            Console.WriteLine($"{item.Key} refers to {item.Value.ToString()}");
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -350,7 +362,7 @@ namespace LaunchApp
                 }
                 else
                 {
-                    Console.WriteLine("Usage AppLauncher alias (add/remove) [Alias] <shortcutName>");
+                    Console.WriteLine($"Usage {AppContext.BaseDirectory} alias (add/remove) [Alias] <shortcutName>");
                 }
             }
             else if (args[0].ToLower() == "help")
